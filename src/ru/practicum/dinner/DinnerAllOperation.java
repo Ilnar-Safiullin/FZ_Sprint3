@@ -1,7 +1,6 @@
 package ru.practicum.dinner;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Random;
 
 public class DinnerAllOperation {
@@ -18,23 +17,7 @@ public class DinnerAllOperation {
         }
     }
 
-    static void generateDishCombo(int numberOfCombos, String nextItem, Scanner scanner) {
-        ArrayList<String> items = new ArrayList<>();
-        if (!dishesList.containsKey(nextItem)) { // если нет в списке ключей, то вернет в меню. ниже будет скопировано, так как мы после первый ввод до цикла While, переменную nextItem должны проверить.
-            System.out.println(nextItem + " такой категории еды нет, возврат в меню (_!_)");
-            return;
-        }
-        items.add(nextItem);
-        while (!nextItem.isEmpty()) {
-            nextItem = scanner.nextLine();
-            if (!nextItem.isEmpty()) { // добавил эту строку, чтобы пустая строка не добавлялась в Лист,
-                if (!dishesList.containsKey(nextItem)) {
-                    System.out.println(nextItem + " такой категории еды нет, возврат в меню (_!_)");
-                    return;
-                }
-                items.add(nextItem);
-            }
-        }
+    static void generateDishCombo(int numberOfCombos, ArrayList items) {
         for (int i = 0; i < numberOfCombos; i++) {
             Random random = new Random();
             ArrayList<String> combo = new ArrayList<>();
@@ -49,3 +32,5 @@ public class DinnerAllOperation {
     }
 }
 
+// Есть ли ошибку в классе? я не создавал конструктор отдельный, может его нужно было как настроить сделать а не по умолчанию оставить.
+// Может чтото лишнее обьявлено тут.
